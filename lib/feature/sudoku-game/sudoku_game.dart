@@ -16,7 +16,11 @@ class SudokuGame extends StatelessWidget {
             ),
             itemCount: 81,
             itemBuilder: (context, index) {
-              return SudokuGridCell(index: index);
+              return SudokuGridCell(
+                index: index,
+                value: 4,
+                annotations: List.filled(9, true),
+              );
             },
           ),
         ),
@@ -26,22 +30,20 @@ class SudokuGame extends StatelessWidget {
 }
 
 class SudokuGridCell extends StatelessWidget {
-  const SudokuGridCell({super.key, required this.index});
+  const SudokuGridCell(
+      {super.key, required this.index, this.value, required this.annotations});
 
   final int index;
+  final int? value;
+  final List<bool> annotations;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        border: _getBorderTypeFromIndex(index),
-      ),
-      child: Center(
-        child: Text(
-          index.toString(),
+        decoration: BoxDecoration(
+          border: _getBorderTypeFromIndex(index),
         ),
-      ),
-    );
+        child: SudokuGridCellContent(value: value, annotations: annotations));
   }
 
   BoxBorder _getBorderTypeFromIndex(int index) {
@@ -75,5 +77,45 @@ class SudokuGridCell extends StatelessWidget {
       bottom: bottom,
       left: left,
     );
+  }
+}
+
+class SudokuGridCellContent extends StatelessWidget {
+  const SudokuGridCellContent(
+      {super.key, this.value, required this.annotations});
+
+  final int? value;
+  final List<bool> annotations;
+
+  @override
+  Widget build(BuildContext context) {
+    if (value != null) {
+      return Center(
+        child: Text(
+          value.toString(),
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      );
+    } else {
+      return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+          ),
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: 9,
+          itemBuilder: (context, index) {
+            return Center(
+              child: Text(
+                annotations[index] ? (index + 1).toString() : " ",
+                style: const TextStyle(
+                  fontSize: 12,
+                ),
+              ),
+            );
+          });
+    }
   }
 }
