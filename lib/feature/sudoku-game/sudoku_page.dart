@@ -13,7 +13,7 @@ class SudokuPage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pushNamed('sudoku/sudoku_game');
               },
-              child: Text("New Game"),
+              child: const Text("New Game"),
             ),
           ),
         ],
