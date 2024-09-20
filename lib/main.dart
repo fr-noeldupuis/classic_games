@@ -1,4 +1,5 @@
 import 'package:classic_games/feature/homepage/homepage.dart';
+import 'package:classic_games/feature/sudoku-game/sudoku_game.dart';
 import 'package:classic_games/feature/sudoku-game/sudoku_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,9 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => Homepage(),
-        'sudoku_page': (context) => SudokuPage()
+        '/': (context) => const Homepage(),
+        'sudoku/sudoku_home': (context) => const SudokuPage(),
+        'sudoku/sudoku_game': (context) => const SudokuGame(),
       },
     );
   }

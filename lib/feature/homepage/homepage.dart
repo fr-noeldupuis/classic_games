@@ -11,7 +11,7 @@ class Homepage extends StatelessWidget {
           ListTile(
             title: FilledButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('sudoku_page');
+                Navigator.of(context).pushNamed('sudoku/sudoku_home');
               },
               child: const Text("Sudoku"),
             ),

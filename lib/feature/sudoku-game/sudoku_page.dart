@@ -5,8 +5,19 @@ class SudokuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Placeholder(),
+    return Scaffold(
+      body: ListView(
+        children: [
+          ListTile(
+            title: FilledButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('sudoku/sudoku_game');
+              },
+              child: Text("New Game"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
