@@ -10,20 +10,22 @@ class Homepage extends StatelessWidget {
         children: [
           ListTile(
             title: FilledButton(
-              onPressed: () {},
-              child: Text("Sudoku"),
+              onPressed: () {
+                Navigator.of(context).pushNamed('sudoku_page');
+              },
+              child: const Text("Sudoku"),
             ),
           ),
           ListTile(
             title: FilledButton(
               onPressed: () {},
-              child: Text("Game 2"),
+              child: const Text("Game 2"),
             ),
           ),
           ListTile(
             title: FilledButton(
               onPressed: () {},
-              child: Text("Game 3"),
+              child: const Text("Game 3"),
             ),
           ),
         ],
