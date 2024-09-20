@@ -1,7 +1,19 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class SudokuGame extends StatelessWidget {
   const SudokuGame({super.key});
+
+  final String currentGrid =
+      "...8.4.1111.2.3.4.55566.7.9999.765.4.2...8.4.1111.2.3.4.55566.7.9999.765.4.211234";
+  final String currentGridAnnotations =
+      "011010000001011101110101010000001100001101001011110011000101100110111001110011101000100001011000111011001001100111101111000101101110010010011100000000100001101101000111111011001111001101110011101011011111111111101001011011000101111110100111101011011000101010000000110111101111111000100100010001010000110001001100011111000100010001011110110000100011000111101011110001001111100000011001010000000111101100010010001101010110110001011010000110001000000101001001011111010100010111100110011100001101010101101001110000101101010101100110100100100001000001000111101011100101000100011111000100001110010000100000001001101001111010001100111001100011101011111001101111011011010010011101110011100100010110111000001010100010110010110110101110101";
+
+  String generateBinaryString(int length) {
+    final random = Random();
+    return List.generate(length, (_) => random.nextBool() ? '1' : '0').join('');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +30,14 @@ class SudokuGame extends StatelessWidget {
             itemBuilder: (context, index) {
               return SudokuGridCell(
                 index: index,
-                value: 4,
-                annotations: List.filled(9, true),
+                value: currentGrid[index] == "."
+                    ? null
+                    : int.parse(currentGrid[index]),
+                annotations: List.generate(
+                    9,
+                    (i) => currentGrid[index] == "."
+                        ? currentGridAnnotations[index * 9 + i] == "1"
+                        : false),
               );
             },
           ),
