@@ -174,7 +174,8 @@ class SudokuGame extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.of(context)
+                      .popUntil(ModalRoute.withName('sudoku/sudoku_home'));
                 },
                 child: const Text("OK"),
               ),
