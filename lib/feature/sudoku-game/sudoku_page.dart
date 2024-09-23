@@ -11,9 +11,45 @@ class SudokuPage extends StatelessWidget {
           ListTile(
             title: FilledButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('sudoku/sudoku_game');
+                Navigator.of(context).pushNamed(
+                  'sudoku/sudoku_game',
+                  arguments: {'difficulty': 'Easy'},
+                );
               },
-              child: const Text("New Game"),
+              child: const Text("Easy"),
+            ),
+          ),
+          ListTile(
+            title: FilledButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  'sudoku/sudoku_game',
+                  arguments: {'difficulty': 'Simple'},
+                );
+              },
+              child: const Text("Simple"),
+            ),
+          ),
+          ListTile(
+            title: FilledButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  'sudoku/sudoku_game',
+                  arguments: {'difficulty': 'Intermediate'},
+                );
+              },
+              child: const Text("Intermediate"),
+            ),
+          ),
+          ListTile(
+            title: FilledButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  'sudoku/sudoku_game',
+                  arguments: {'difficulty': 'Hard'},
+                );
+              },
+              child: const Text("Hard"),
             ),
           ),
         ],

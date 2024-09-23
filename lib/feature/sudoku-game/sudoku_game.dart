@@ -9,8 +9,12 @@ class SudokuGame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SudokuGridDTO sudokuGridDTO =
-        context.read<SudokuJsonRepository>().getRandomGrid("Easy");
+    final Map<String, dynamic> args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    print(args);
+    SudokuGridDTO sudokuGridDTO = context
+        .read<SudokuJsonRepository>()
+        .getRandomGrid(args['difficulty'] ?? "Simple");
     return BlocProvider(
       create: (context) => SudokuGameBloc(
         initialGrid: sudokuGridDTO.initialGrid,

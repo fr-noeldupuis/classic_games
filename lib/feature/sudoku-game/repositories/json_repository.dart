@@ -6,7 +6,7 @@ import 'package:flutter/services.dart' show rootBundle;
 class SudokuJsonRepository {
   late final Map<String, List<SudokuGridDTO>> _sudokuGrids;
 
-  SudokuJsonRepository() {}
+  SudokuJsonRepository();
 
   initializeRepository() async {
     logger.d("Sudoku Grids started loading");
