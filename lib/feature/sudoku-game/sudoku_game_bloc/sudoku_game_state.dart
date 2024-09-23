@@ -83,7 +83,7 @@ final class SudokuGameSelectedCellAnnotateMode extends SudokuGameAnnotateMode {
       [initialGrid, currentGrid, solutionGrid, annotations, selectedCellIndex];
 }
 
-final class SudokuGameSelectedCellFillMode extends SudokuGameInitial {
+final class SudokuGameSelectedCellFillMode extends SudokuGameFillMode {
   SudokuGameSelectedCellFillMode({
     required super.initialGrid,
     required super.currentGrid,
@@ -97,4 +97,13 @@ final class SudokuGameSelectedCellFillMode extends SudokuGameInitial {
   @override
   List<Object> get props =>
       [initialGrid, currentGrid, solutionGrid, annotations, selectedCellIndex];
+}
+
+final class SudokuGameSuccess extends SudokuGameInitial {
+  SudokuGameSuccess({
+    required super.initialGrid,
+    required super.currentGrid,
+    required super.solutionGrid,
+    super.annotations,
+  });
 }
